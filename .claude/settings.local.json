@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(dir \"d:\\\\CRWEB\" -Force | Where-Object { -not $_.PSIsContainer } | ForEach-Object { \"{0,-40} {1:N0} bytes\" -f $_.Name, $_.Length })",
+      "WebSearch"
+    ]
+  }
+}

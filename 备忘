@@ -1,0 +1,62 @@
+1. 加爱好（如 F1）
+backup/chenrui-site-v2.zh-backup.jsx:243
+
+
+hobbies: ["科幻电影", "长文阅读", "界面设计", "深夜散步", "电子氛围乐", "摄影", "F1赛车"],
+直接往数组里加一项即可，首页「兴趣小窝」和碎语页都会自动更新。
+
+2. 加 / 改项目
+backup/chenrui-site-v2.zh-backup.jsx:102
+
+PROJECTS 数组，每个对象就是一个项目。复制下面的模板加在数组末尾（逗号隔开）：
+
+
+{
+  id: "f1-analysis",           // URL用，英文无空格
+  title: "F1 数据分析",
+  tagline: "赛车数据可视化",
+  status: "在研",              // 或"已完成"、"规划中"
+  cover: "linear-gradient(135deg, #1A0A00 0%, #8B1A1A 50%, #E8000D 100%)",
+  icon: "🏎️",
+  brief: "用 Python 分析 F1 赛季数据，探索圈速与策略的关联。",
+  tags: ["Python", "数据分析", "可视化"],
+  fullContent: {
+    hero: "把赛车数据讲成故事",
+    sections: [
+      { title: "概览", content: "..." },
+      { title: "方法", content: "..." },
+    ],
+  },
+},
+cover 字段控制卡片背景色，可以是渐变，也可以直接用图片（见下面第3条）。
+
+3. 用图片做封面
+第一步：把图片放进 public/ 文件夹（这个文件夹就放在 d:\CRWEB\ 根目录，没有就新建一个）：
+
+
+d:\CRWEB\
+  public\
+    f1-cover.jpg     ← 放在这里
+    eureka-cover.png
+第二步：在项目的 cover 字段改成：
+
+
+cover: "url('/f1-cover.jpg') center / cover no-repeat",
+图片会自动填满卡片头部区域。center / cover 控制裁切方式，和 CSS background 写法一样。
+
+4. 在项目详情里放图片 / 视频
+项目的 sections[].content 目前是纯文本。如果想展示图片或视频，最省事的方式是把素材丢进 material/ 文件夹，它们会在「项目」→「研究档案」相关子页里被自动索引和预览（支持 .png .jpg .md .docx .xlsx）。
+
+视频推荐用 B站/YouTube 外链，放在 section content 里描述，或者未来把 content 字段扩展成支持 videoUrl ——需要的话告诉我，我来加这个功能。
+
+5. 修改之后怎么看效果
+
+npm run dev      # 开发预览，改完文件自动刷新
+npm run build    # 打包生产版本（输出到 dist/）
+核心规则只有一条：所有内容都在文件顶部的这几个常量里，改数据不碰组件代码：
+
+你想改什么	找哪个常量	行号
+爱好 / 碎语	HOME_FRAGMENT_DATA	~237
+项目	PROJECTS	~102
+知识库 / 踩坑记录	KNOWLEDGE	~157
+技能条 / 研究兴趣	ABOUT_DATA	~223
