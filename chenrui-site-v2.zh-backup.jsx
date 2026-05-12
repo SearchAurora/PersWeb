@@ -2801,7 +2801,7 @@ function Footer() {
         Search Aurora
       </div>
       <div style={{ fontFamily: DS.font, fontSize: 12, color: "rgba(78,104,138,0.62)", letterSpacing: "0.04em" }}>
-        Minimal front page. Detailed layers underneath.
+        哈基米-鼠鼠有限公司 备案/许可证号：喵鼠2026000000号
       </div>
     </footer>
   );
